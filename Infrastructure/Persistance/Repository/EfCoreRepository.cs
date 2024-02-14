@@ -1,12 +1,7 @@
 ﻿using Application.Repository;
 using Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistance.Repository
 {
@@ -40,7 +35,7 @@ namespace Persistance.Repository
             return true;
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteIdAsync(int id)
         {
             Context.Entry(id).State= EntityState.Deleted;
             await Context.SaveChangesAsync();

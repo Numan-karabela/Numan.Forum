@@ -11,7 +11,7 @@ namespace Application.Repository
         Task<bool> AddAsync(T Entity);
         Task<bool> UpdateAsync(T Entity);
         Task<bool> DeleteAsync(T Entity);
-        Task<bool> DeleteAsync(int id);
+        Task<bool> DeleteIdAsync(int id);
 
     }
 }
