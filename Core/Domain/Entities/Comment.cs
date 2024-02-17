@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Comment:BaseEntity
+    public class Comment:BaseEntity//yorum
     {
         public string Content { get; set; }//içerik
         public int UserId { get; set; }//yazan kullanıcı

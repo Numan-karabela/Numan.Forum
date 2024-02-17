@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Application.Repository
 {
-    public interface IRepository<T>:IQuery<T> where T : class
+    public interface IRepository<T>:IQuery<T> where T : BaseEntity
     {
         Task<T> GettAllAsync(Expression<Func<T,bool>> filter=null);
         Task<T> GetAsync(Expression<Func<T, bool>> filter);

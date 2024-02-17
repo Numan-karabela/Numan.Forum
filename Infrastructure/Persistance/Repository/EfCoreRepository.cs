@@ -1,4 +1,5 @@
 ﻿using Application.Repository;
+using Azure.Core;
 using Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -59,7 +60,9 @@ namespace Persistance.Repository
         {
             Context.Entry(Entity).State = EntityState.Modified;
             await Context.SaveChangesAsync();
+            
             return true;
         }
+        
     }
 }

@@ -22,11 +22,14 @@ namespace N_ForumApi.Controllers
             var users= await _userRepository.AddAsync(user);
             return Ok(users);
         }
-        [HttpDelete]
-        public async Task<IActionResult> Delete()
+        [HttpDelete("id")]
+        public async Task<IActionResult> DeleteById(User user)
         {
-            return Ok();
+         var delete=  await _userRepository.DeleteAsync(user);
+            return Ok(delete);
+            
         }
+    
 
     }
 }
