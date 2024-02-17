@@ -1,5 +1,7 @@
-﻿using Application.Repository;
+﻿using Application.Features.AppUserC.CreateUser;
+using Application.Repository;
 using Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,27 +11,18 @@ namespace N_ForumApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-       private readonly  IUserRepository _userRepository;
 
-        public UserController(IUserRepository userRepository)
+       readonly IMediator _mediator;
+
+        public UserController(IMediator mediator)
         {
-            _userRepository = userRepository;
+            _mediator = mediator;
         }
 
-        [HttpPost]
-        public  async Task<IActionResult> Add(User user)
+        public async Task<IActionResult> UserCreate(CreateUserrCommandRequest createUserrCommandRequest)
         {
-            var users= await _userRepository.AddAsync(user);
-            return Ok(users);
+            CreateUserrCommandResponse response = await _mediator.Send(createUserrCommandRequest);
+            return Ok(response);
         }
-        [HttpDelete("id")]
-        public async Task<IActionResult> DeleteById(User user)
-        {
-         var delete=  await _userRepository.DeleteAsync(user);
-            return Ok(delete);
-            
-        }
-    
-
     }
 }

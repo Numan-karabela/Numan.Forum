@@ -1,4 +1,5 @@
 ﻿using Application.Repository;
+using Domain.Entities.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Persistance.Context;
 using Persistance.Repository;
@@ -16,7 +17,8 @@ namespace Persistance
         public static void AddPersistanceService(this IServiceCollection service)
         {
             service.AddDbContext<ForumDbContext>();
-            service.AddScoped<IUserRepository, UserRepository>();
+            service.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<ForumDbContext>();
+             
             service.AddScoped<ICommentRepository, CommentRepository>();
             service.AddScoped<IPostRepository, PostRepository>();
         }
