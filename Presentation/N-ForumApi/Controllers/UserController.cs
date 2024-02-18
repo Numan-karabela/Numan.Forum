@@ -18,7 +18,7 @@ namespace N_ForumApi.Controllers
         {
             _mediator = mediator;
         }
-
+        [HttpPost]
         public async Task<IActionResult> UserCreate(CreateUserrCommandRequest createUserrCommandRequest)
         {
             CreateUserrCommandResponse response = await _mediator.Send(createUserrCommandRequest);

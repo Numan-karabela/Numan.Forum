@@ -11,30 +11,38 @@ namespace Application.Features.AppUserC.CreateUser
 {
     public class CreateUserrCommandHandler : IRequestHandler<CreateUserrCommandRequest, CreateUserrCommandResponse>
     {
-        UserManager<AppUser>_userManager;
-        public async Task<CreateUserrCommandResponse> Handle(CreateUserrCommandRequest request, CancellationToken cancellationToken)
+         
+            UserManager<AppUser> _userManager;
+
+        public CreateUserrCommandHandler(UserManager<AppUser> userManager)
         {
-           IdentityResult result=await _userManager.CreateAsync(new(){
-                UserName = request.UserName,
+            _userManager = userManager;
+        }
+
+        public async Task<CreateUserrCommandResponse> Handle(CreateUserrCommandRequest request, CancellationToken cancellationToken)
+            {
+            IdentityResult result = await _userManager.CreateAsync(new()
+            { Id = new int().ToString(),
+                    UserName = request.UserName,
                 NormalizedUserName = request.NameSurname,
                 Email = request.Email,
             }, request.Password);
 
-            if (result.Succeeded)
-            {
-                return new()
+                if (result.Succeeded)
                 {
-                    Succeded = "Kayıt başarılı"
-                };
-            }
-            else
-            {
-                return new()
+                    return new()
+                    {
+                        Succeded = "Kayıt başarılı"
+                    };
+                }
+                else
                 {
-                    Succeded="Kayıt başarısız"
-                };
+                    return new()
+                    {
+                        Succeded = "Kayıt başarısız"
+                    };
+                }
+
             }
-             
         }
     }
-}
