@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Identity
 {
-    public class AppUser:IdentityUser<string>
+    public class AppUser:IdentityUser<int>
     { 
     }
 }

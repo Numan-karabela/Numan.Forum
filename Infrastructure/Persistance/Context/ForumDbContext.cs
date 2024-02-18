@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Persistance.Context
 {
-    public class ForumDbContext : IdentityDbContext<AppUser, AppRole, string>
+    public class ForumDbContext : IdentityDbContext<AppUser, AppRole, int>
     {
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

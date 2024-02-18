@@ -22,9 +22,9 @@ namespace Application.Features.AppUserC.CreateUser
         public async Task<CreateUserrCommandResponse> Handle(CreateUserrCommandRequest request, CancellationToken cancellationToken)
             {
             IdentityResult result = await _userManager.CreateAsync(new()
-            { Id = new int().ToString(),
-                    UserName = request.UserName,
-                NormalizedUserName = request.NameSurname,
+            {  Id=new(),
+                UserName = request.UserName,
+                NormalizedUserName= request.NameSurname,
                 Email = request.Email,
             }, request.Password);
 
