@@ -26,6 +26,7 @@ namespace N_ForumApi.Controllers
             CreateUserrCommandResponse response = await _mediator.Send(createUserrCommandRequest);
             return Ok(response);
         }
+        [HttpPost("[action]")]
         public async Task<IActionResult> Login(LoginUserrCommandRequest loginUserrCommandRequest)
         {
            LoginUserrCommandResponse response = await _mediator.Send(loginUserrCommandRequest);
