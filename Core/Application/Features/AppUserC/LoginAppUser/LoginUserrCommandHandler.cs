@@ -40,7 +40,7 @@ namespace Application.Features.AppUserC.LoginAppUser
                 return new() { message = "Giriş başarılı" };
             }
             else
-                return new() { message = "Giriş Başarısız" };
+                return new() { message = "şifre eşleşmiyor" };
             
 
 

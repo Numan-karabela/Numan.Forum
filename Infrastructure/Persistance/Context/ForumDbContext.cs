@@ -12,12 +12,10 @@ namespace Persistance.Context
 {
     public class ForumDbContext : IdentityDbContext<AppUser, AppRole, int>
     {
-        
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ForumDbContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NForumDb;Integrated Security=True;");
         }
-        
+
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Post> Posts { get; set; }
 

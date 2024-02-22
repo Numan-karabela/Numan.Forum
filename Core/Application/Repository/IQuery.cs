@@ -1,5 +1,6 @@
 ﻿
 using Domain.Entities.Common;
+using System.Data.Entity;
 
 namespace Application.Repository
 {
