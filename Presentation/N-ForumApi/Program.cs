@@ -1,6 +1,7 @@
 using Application;
 using Application.Validators;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Persistance;
@@ -19,8 +20,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddPersistanceService(builder.Configuration);
 builder.Services.AddAplicationService();
 
-builder.Services.AddAuthentication("Admin").
-    AddJwtBearer(options =>
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer("Admin",options =>
     {
         options.TokenValidationParameters = new()
         {
@@ -47,6 +48,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

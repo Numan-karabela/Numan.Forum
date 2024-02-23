@@ -19,11 +19,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\AppUserC\DeleteUser\" />
-    <Folder Include="Features\AppUserC\GetAllUser\" />
-    <Folder Include="Features\AppUserC\GetByIdUser\" />
-    <Folder Include="Features\AppUserC\UpdateUser\" />
-  </ItemGroup>
-
 </Project>

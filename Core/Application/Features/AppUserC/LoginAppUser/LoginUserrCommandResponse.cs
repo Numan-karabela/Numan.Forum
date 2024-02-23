@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,6 @@ namespace Application.Features.AppUserC.LoginAppUser
     public class LoginUserrCommandResponse
     {
         public string message { get; set; }
+        public TokenResponse Token { get; set; }
     }
 }
