@@ -3,6 +3,7 @@ using Application.Features.AppUserC.LoginAppUser;
 using Application.Repository;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace N_ForumApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(AuthenticationSchemes ="Admin")]
     public class UserController : ControllerBase
     {
 

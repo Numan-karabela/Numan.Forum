@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Common;
+using Domain.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,9 @@ namespace Domain.Entities
 {
     public class Comment:BaseEntity//yorum
     {
-        public string Content { get; set; }//içerik
-        public int UserId { get; set; }//yazan kullanıcı
+        public string Content { get; set; }//içerik 
         public int PostId { get; set; }
+        public Post Post { get; set; }
+        public AppUser User{ get; set; } 
     }
 }

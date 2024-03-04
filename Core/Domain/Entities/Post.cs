@@ -13,6 +13,7 @@ namespace Domain.Entities
         public string Content { get; set; }//içerik
         public string Author { get; set; }//yazar
         public int UserId { get; set; }//yazan kullanıcı
+        public ICollection<Comment> Comments { get; set; }
         public DateTime releasedate { get; set; }//yazım tarihi
 
     }
