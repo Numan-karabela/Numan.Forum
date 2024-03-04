@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace Domain.Entities.Identity
 {
     public class AppUser:IdentityUser<int>
-    { 
+    {
+        public string Name { get; set; }
+        public string SurName { get; set; }
     }
 }

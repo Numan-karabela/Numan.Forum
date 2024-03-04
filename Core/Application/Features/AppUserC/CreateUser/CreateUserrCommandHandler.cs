@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,12 @@ namespace Application.Features.AppUserC.CreateUser
 
         public async Task<CreateUserrCommandResponse> Handle(CreateUserrCommandRequest request, CancellationToken cancellationToken)
             {
+             
             IdentityResult result = await _userManager.CreateAsync(new()
             {  Id=new(),
                 UserName = request.UserName,
-                NormalizedUserName= request.NameSurname,
+                Name= request.Name,
+                SurName=request.SurName,
                 Email = request.Email,
             }, request.Password);
 
@@ -32,14 +35,14 @@ namespace Application.Features.AppUserC.CreateUser
                 {
                     return new()
                     {
-                        Succeded = "Kayıt başarılı"
+                        Succeded = "True"
                     };
                 }
                 else
                 {
                     return new()
                     {
-                        Succeded = "Kayıt başarısız"
+                        Succeded = "False"
                     };
                 }
 

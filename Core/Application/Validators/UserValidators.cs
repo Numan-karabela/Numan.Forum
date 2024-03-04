@@ -1,16 +1,15 @@
-﻿using Domain.Entities;
-using Domain.Entities.Identity;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Identity;
+using FluentValidation; 
 
 namespace Application.Validators
 {
-    public class UserValidators:AbstractValidator<Comment>
+    public class UserValidators:AbstractValidator<AppUser>
     {
-      
+        public UserValidators()
+        {
+            RuleFor(p=>p.Name).NotEmpty();
+            
+        }
+
     }
 }
