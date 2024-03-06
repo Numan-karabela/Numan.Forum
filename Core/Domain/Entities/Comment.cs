@@ -13,6 +13,8 @@ namespace Domain.Entities
         public string Content { get; set; }//içerik 
         public int PostId { get; set; }
         public Post Post { get; set; }
-        public AppUser User{ get; set; } 
+        public AppUser User{ get; set; }
+        public int UserId{ get; set; }
+
     }
 }

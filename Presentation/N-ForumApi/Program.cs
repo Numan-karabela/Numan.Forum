@@ -5,7 +5,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Persistance;
+using Serilog;
+using Serilog.Core;
+using Serilog.Formatting.Compact;
+using Serilog.Sinks.MSSqlServer;
 using System.Text;
+using static Serilog.Sinks.MSSqlServer.ColumnOptions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,6 +24,27 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistanceService(builder.Configuration);
 builder.Services.AddAplicationService();
+
+//Logger log = new LoggerConfiguration()
+//.WriteTo.Console()
+//.WriteTo.File("logs/log.txt")
+//.WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("Sql"), "Logs",
+//autoCreateSqlTable: true,
+//columnOptions: new Dictionary<string, ColumnOptions>()
+//{
+//        {"Message",new MessageColumnOptions()},
+
+//        //"message",new MessageColumnOptions(),
+//        //"message_template",new MessageTemplateColumnOptions(),
+//        //"level",new LevelColumnOptions(),
+//        //"time_stamp",new TimeStampColumnOptions(),
+//        //"exception",new ExceptionColumnOptions(),
+//        //"log_event",new LogEventColumnOptions()
+        
+//})
+//.CreateLogger();
+
+//builder.Host.UseSerilog(log);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Admin",options =>

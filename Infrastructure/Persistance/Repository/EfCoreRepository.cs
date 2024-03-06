@@ -45,13 +45,13 @@ namespace Persistance.Repository
 
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
         {
-            return Context.Set<TEntity>().SingleOrDefault(filter);
+            return Context.Set<TEntity>().AsNoTracking().SingleOrDefault(filter);
         }
 
 
         public async Task<TEntity> GettAllAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            return await Context.Set<TEntity>().FirstOrDefaultAsync(filter); 
+            return await Context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(filter);
         }
 
      
