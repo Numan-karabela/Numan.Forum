@@ -4,6 +4,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using N_ForumApi.Middlewares;
 using Persistance;
 using Serilog;
 using Serilog.Core;
@@ -40,12 +41,13 @@ builder.Services.AddAplicationService();
 //        //"time_stamp",new TimeStampColumnOptions(),
 //        //"exception",new ExceptionColumnOptions(),
 //        //"log_event",new LogEventColumnOptions()
-        
+
 //})
 //.CreateLogger();
 
 //builder.Host.UseSerilog(log);
 
+ 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Admin",options =>
     {
@@ -71,7 +73,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.AddExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

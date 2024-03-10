@@ -20,7 +20,6 @@ namespace N_ForumApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCreate(CreatePostCommandRequest createPostCommandRequest)
         {
-
             CreatePostCommandResponse response= await _mediator.Send(createPostCommandRequest);
             return Ok(response);
         }
