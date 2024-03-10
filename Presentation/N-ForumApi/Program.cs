@@ -42,7 +42,7 @@ builder.Services.AddAplicationService();
 //        //"exception",new ExceptionColumnOptions(),
 //        //"log_event",new LogEventColumnOptions()
 
-//})
+//}) 
 //.CreateLogger();
 
 //builder.Host.UseSerilog(log);
