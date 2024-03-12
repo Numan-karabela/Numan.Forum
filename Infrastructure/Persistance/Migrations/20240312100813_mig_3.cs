@@ -5,7 +5,7 @@
 namespace Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_6 : Migration
+    public partial class mig_3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

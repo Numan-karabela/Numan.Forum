@@ -13,7 +13,6 @@ namespace Application
         public static void AddAplicationService(this IServiceCollection collection)
         {
             collection.AddMediatR(typeof(ServiceRegistration));
-
         }
     }
 }

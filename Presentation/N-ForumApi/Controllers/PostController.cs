@@ -1,8 +1,8 @@
 ﻿using Application.Features.CommentC.CreateComment;
 using Application.Features.PostC.CreatePost;
-using MediatR;
-using Microsoft.AspNetCore.Http;
+using MediatR; 
 using Microsoft.AspNetCore.Mvc;
+ 
 
 namespace N_ForumApi.Controllers
 {
@@ -20,20 +20,21 @@ namespace N_ForumApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCreate(CreatePostCommandRequest createPostCommandRequest)
         {
+         
             CreatePostCommandResponse response= await _mediator.Send(createPostCommandRequest);
             return Ok(response);
         }
        
-        [HttpDelete("deleteId")]
-        public async Task<IActionResult> PostDelete()
-        {
-            return Ok();
+        //[HttpDelete("deleteId")]
+        //public async Task<IActionResult> PostDelete()
+        //{
+        //    return Ok();
 
-        }
-        [HttpGet]
-        public async Task<IActionResult> PostGet()
-        {
-            return Ok();
-        }
+        //}
+        //[HttpGet]
+        //public async Task<IActionResult> PostGet()
+        //{
+        //    return Ok();
+        //}
     }
 }

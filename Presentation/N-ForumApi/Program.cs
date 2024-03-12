@@ -18,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<UserValidators>());
+
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -26,28 +26,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddPersistanceService(builder.Configuration);
 builder.Services.AddAplicationService();
 
-//Logger log = new LoggerConfiguration()
-//.WriteTo.Console()
-//.WriteTo.File("logs/log.txt")
-//.WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("Sql"), "Logs",
-//autoCreateSqlTable: true,
-//columnOptions: new Dictionary<string, ColumnOptions>()
-//{
-//        {"Message",new MessageColumnOptions()},
+Logger log = new LoggerConfiguration()
+.WriteTo.Console()
+.WriteTo.File("logs/log.txt").CreateLogger();
 
-//        //"message",new MessageColumnOptions(),
-//        //"message_template",new MessageTemplateColumnOptions(),
-//        //"level",new LevelColumnOptions(),
-//        //"time_stamp",new TimeStampColumnOptions(),
-//        //"exception",new ExceptionColumnOptions(),
-//        //"log_event",new LogEventColumnOptions()
+builder.Host.UseSerilog(log);
 
-//}) 
-//.CreateLogger();
+builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PostValidator>());
 
-//builder.Host.UseSerilog(log);
-
- 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Admin",options =>
     {
@@ -65,6 +51,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
 
     });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
