@@ -1,14 +1,10 @@
 ﻿using Application.Repository;
 using MediatR;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Mvc;
-using System.Web.WebPages.Html;
 
 namespace Application.Features.PostC.CreatePost
 {
@@ -23,7 +19,6 @@ namespace Application.Features.PostC.CreatePost
 
         public async Task<CreatePostCommandResponse> Handle(CreatePostCommandRequest request, CancellationToken cancellationToken)
         {
-            
            var sonuc= await _postRepository.AddAsync(new()
             {
                 UserId = request.UserId,
@@ -31,10 +26,7 @@ namespace Application.Features.PostC.CreatePost
                 Content = request.Content,
                 Title = request.Title,
                 DateTime=DateTime.Now,
-                
-                
             });
-
 
             if (sonuc==true)
             {

@@ -1,5 +1,7 @@
 ﻿using Application.Abstractions.Token;
 using Application.Repository;
+using Application.Validators;
+using Domain.Entities;
 using Domain.Entities.Identity;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +28,7 @@ namespace Persistance
              
             service.AddScoped<ICommentRepository, CommentRepository>();
             service.AddScoped<ITokenHandler,TokenHandler>();
-            service.AddScoped<IPostRepository, PostRepository>();
+            service.AddScoped<IPostRepository, PostRepository>(); 
         }
 
 

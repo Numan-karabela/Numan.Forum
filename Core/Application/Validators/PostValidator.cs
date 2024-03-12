@@ -12,7 +12,11 @@ namespace Application.Validators
     {
         public PostValidator()
         {
-            RuleFor(x=>x.Title).NotNull().NotEmpty().WithMessage("Başlık boş olamaz"); 
+            RuleFor(x=>x.Title).NotNull().WithMessage("Başlık boş olamaz"); 
+            RuleFor(x=>x.Content).NotNull().WithMessage("Boş değer girilemez");
+            RuleFor(x => x.UserId).NotNull().WithMessage("Hata");
+
+
         }
     }
 }
