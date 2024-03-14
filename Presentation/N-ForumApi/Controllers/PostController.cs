@@ -1,8 +1,14 @@
 ﻿using Application.Features.CommentC.CreateComment;
 using Application.Features.PostC.CreatePost;
+using Application.Features.PostC.DeletePost;
+using Application.Features.PostC.UpdatePost;
+using Application.Repository;
+using Domain.Entities;
 using MediatR; 
 using Microsoft.AspNetCore.Mvc;
- 
+using Persistance.Context;
+using System.Data.Entity;
+
 
 namespace N_ForumApi.Controllers
 {
@@ -10,11 +16,11 @@ namespace N_ForumApi.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
-        IMediator _mediator;
+        IMediator _mediator; 
 
-        public PostController(IMediator mediator)
+        public PostController(IMediator mediator )
         {
-            _mediator = mediator;
+            _mediator = mediator; 
         }
 
         [HttpPost]
@@ -24,17 +30,20 @@ namespace N_ForumApi.Controllers
             CreatePostCommandResponse response= await _mediator.Send(createPostCommandRequest);
             return Ok(response);
         }
-       
-        //[HttpDelete("deleteId")]
-        //public async Task<IActionResult> PostDelete()
-        //{
-        //    return Ok();
 
-        //}
+        [HttpDelete("id")]
+        public async Task<IActionResult> PostDelete(DeletePostCommandRequest deletePostCommandRequest)
+        {
+             DeletePostCommandResponse response= await _mediator.Send(deletePostCommandRequest);
+            return Ok(response);
+
+        }
+
+
         //[HttpGet]
         //public async Task<IActionResult> PostGet()
         //{
-        //    return Ok();
+        //    return Ok(_postRepository.GettAllAsync());
         //}
     }
 }

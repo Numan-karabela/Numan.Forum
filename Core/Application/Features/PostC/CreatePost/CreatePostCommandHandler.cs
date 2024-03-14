@@ -10,7 +10,7 @@ namespace Application.Features.PostC.CreatePost
 {
     public class CreatePostCommandHandler : IRequestHandler<CreatePostCommandRequest, CreatePostCommandResponse>
     {
-        IPostRepository _postRepository;
+        private readonly IPostRepository _postRepository;
 
         public CreatePostCommandHandler(IPostRepository postRepository)
         {

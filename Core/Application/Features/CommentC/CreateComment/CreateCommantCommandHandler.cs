@@ -11,7 +11,7 @@ namespace Application.Features.CommentC.CreateComment
 {
     public class CreateCommantCommandHandler : IRequestHandler<CreateCommentCommandRequest, CreateCommentCommandResponse>
     {
-        ICommentRepository _commentRepository;
+        private readonly ICommentRepository _commentRepository;
 
         public CreateCommantCommandHandler(ICommentRepository commentRepository)
         {

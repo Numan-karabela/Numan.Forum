@@ -11,7 +11,7 @@ namespace Persistance.Repository
         where TContext : DbContext
     {
         TContext Context;
-
+         
         public EfCoreRepository(TContext context)
         {
             Context = context;

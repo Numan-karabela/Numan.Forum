@@ -12,8 +12,8 @@ namespace Application.Features.AppUserC.CreateUser
 {
     public class CreateUserrCommandHandler : IRequestHandler<CreateUserrCommandRequest, CreateUserrCommandResponse>
     {
-         
-            UserManager<AppUser> _userManager;
+
+        private readonly UserManager<AppUser> _userManager;
 
         public CreateUserrCommandHandler(UserManager<AppUser> userManager)
         {
