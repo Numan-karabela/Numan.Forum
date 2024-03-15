@@ -13,17 +13,27 @@ namespace Application.Features.PostC.GetPost
     {
         
         private readonly IPostRepository _postRepository;
+
+        public GettPostQueryHandler(IPostRepository postRepository)
+        {
+            _postRepository = postRepository;
+        }
+
         public async Task<GettPostQueryResponse> Handle(GettPostQueryRequest request, CancellationToken cancellationToken)
         {
            var post= await _postRepository.GetAsync(p=>p.Id==request.id);
 
-
-            return new()
+            if (post!=null)
             {
-                UserId = post.UserId,
-                Title =post.Title,
-                Content=post.Content,
-            };
+                return new()
+                {
+                    UserId = post.UserId,
+                    Title = post.Title,
+                    Content = post.Content,
+                }; 
+            }
+            return new();
+           
         }
     }
 }

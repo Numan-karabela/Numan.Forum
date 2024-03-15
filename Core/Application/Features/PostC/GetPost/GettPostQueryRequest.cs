@@ -1,5 +1,4 @@
-﻿using Domain.Entities;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +9,6 @@ namespace Application.Features.PostC.GetPost
 {
     public class GettPostQueryRequest:IRequest<GettPostQueryResponse>
     {
-        public int id{ get; set; }
+        public int id { get; set; }
     }
 }
