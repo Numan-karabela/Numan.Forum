@@ -20,7 +20,7 @@ namespace Application.Features.PostC.UpdatePost
         public async Task<UpdatePostCommandResponse> Handle(UpdatePostCommandRequest request, CancellationToken cancellationToken)
         {
           var a= await   _repository.UpdateAsync(new()
-            {
+            {   Id=request.id,
                 Title= request.Title,
                 Content= request.Content,
             });
