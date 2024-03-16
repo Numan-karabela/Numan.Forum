@@ -32,8 +32,7 @@ Logger log = new LoggerConfiguration()
 
 builder.Host.UseSerilog(log);
 
-builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PostValidator>())
-     .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
+//builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PostValidator>());
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Admin",options =>
