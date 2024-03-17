@@ -12,6 +12,7 @@ using Serilog.Formatting.Compact;
 using Serilog.Sinks.MSSqlServer;
 using System.Text;
 using static Serilog.Sinks.MSSqlServer.ColumnOptions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -31,9 +32,7 @@ Logger log = new LoggerConfiguration()
 .WriteTo.File("logs/log.txt").CreateLogger();
 
 builder.Host.UseSerilog(log);
-
-//builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PostValidator>());
-
+ 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Admin",options =>
     {

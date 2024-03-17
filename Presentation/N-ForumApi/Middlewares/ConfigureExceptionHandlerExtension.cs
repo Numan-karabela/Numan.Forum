@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Serilog.Core;
 using System.Net;
 using System.Net.Mime;
 using System.Text.Json;
@@ -36,6 +37,7 @@ namespace N_ForumApi.Middlewares
             });
 
         }
+        
 
     }
 }
