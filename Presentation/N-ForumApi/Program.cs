@@ -27,27 +27,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddPersistanceService(builder.Configuration);
 builder.Services.AddAplicationService();
 builder.Services.AddSeriLogHandler();
-
 builder.Host.UseSerilog();
- 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer("Admin",options =>
-    {
-        options.TokenValidationParameters = new()
-        {
-            ValidateAudience = true,
-            ValidateIssuer = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-
-
-            ValidAudience = builder.Configuration["Token:Audience"],
-            ValidIssuer = builder.Configuration["Token:Issuer"],
-            IssuerSigningKey= new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"]))
-        };
-
-    });
-
+builder.Services.addJwtHandler(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
