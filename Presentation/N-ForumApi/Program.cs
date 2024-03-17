@@ -26,12 +26,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistanceService(builder.Configuration);
 builder.Services.AddAplicationService();
+builder.Services.AddSeriLogHandler();
 
-Logger log = new LoggerConfiguration()
-.WriteTo.Console()
-.WriteTo.File("logs/log.txt").CreateLogger();
-
-builder.Host.UseSerilog(log);
+builder.Host.UseSerilog();
  
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Admin",options =>
