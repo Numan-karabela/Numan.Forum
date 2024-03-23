@@ -49,9 +49,9 @@ namespace Persistance.Repository
         }
 
 
-        public async Task<TEntity> GettAllAsync(Expression<Func<TEntity, bool>> filter = null)
+        async Task<List<TEntity>> IRepository<TEntity>.GettAllAsync(Expression<Func<TEntity, bool>> filter)
         {
-            return await Context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(filter);
+            return await Context.Set<TEntity>().Where(filter).ToListAsync();
         }
 
      
@@ -62,6 +62,7 @@ namespace Persistance.Repository
             
             return true;
         }
+
         
     }
 }

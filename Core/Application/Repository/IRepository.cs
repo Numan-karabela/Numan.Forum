@@ -6,7 +6,7 @@ namespace Application.Repository
 {
     public interface IRepository<T>:IQuery<T> where T : BaseEntity
     {
-        Task<T> GettAllAsync(Expression<Func<T,bool>> filter=null);
+        Task<List<T>> GettAllAsync(Expression<Func<T,bool>> filter=null);
         Task<T> GetAsync(Expression<Func<T, bool>> filter);
         Task<bool> AddAsync(T Entity);
         Task<bool> UpdateAsync(T Entity);

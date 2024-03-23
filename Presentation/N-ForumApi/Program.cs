@@ -1,17 +1,7 @@
 using Application;
-using Application.Validators;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using N_ForumApi.Middlewares;
 using Persistance;
 using Serilog;
-using Serilog.Core;
-using Serilog.Formatting.Compact;
-using Serilog.Sinks.MSSqlServer;
-using System.Text;
-using static Serilog.Sinks.MSSqlServer.ColumnOptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +19,7 @@ builder.Services.AddAplicationService();
 builder.Services.AddSeriLogHandler();
 builder.Host.UseSerilog();
 builder.Services.addJwtHandler(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
