@@ -12,7 +12,7 @@ namespace Persistance.Repository
     public class PostRepository : EfCoreRepository<Post, ForumDbContext>,IPostRepository
     {
         public PostRepository(ForumDbContext context) : base(context)
-        {
+    {
         }
     }
 }
